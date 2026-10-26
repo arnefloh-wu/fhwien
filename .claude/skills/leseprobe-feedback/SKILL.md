@@ -1,11 +1,11 @@
 ---
 name: leseprobe-feedback
-description: Write short German feedback (200–300 words, plain text) on a Leseprobe (reading sample / draft chapter) of a Bachelor or Master thesis. Use when the user uploads or points to a PDF or Word file (.pdf, .docx, .doc, .odt) and asks for "Feedback zur Leseprobe", feedback on a thesis draft, a Probekapitel, Exposé-Kapitel or Zwischenstand of a Bachelorarbeit/Masterarbeit. Checks the contribution to the research question, the logical flow of arguments, grammar, citation, sources and writing style. Not for full grading with the Excel Gutachten (use bachelor-thesis-assessment or master-thesis-assessment for that).
+description: Write short feedback (200–300 words, plain text) in the language of the thesis (German for German theses, English for English theses) on a Leseprobe (reading sample / draft chapter) of a Bachelor or Master thesis. Use when the user uploads or points to a PDF or Word file (.pdf, .docx, .doc, .odt) and asks for "Feedback zur Leseprobe", feedback on a thesis draft, a Probekapitel, Exposé-Kapitel or Zwischenstand of a Bachelorarbeit/Masterarbeit. Checks the contribution to the research question, the logical flow of arguments, grammar, citation, sources and writing style. Not for full grading with the Excel Gutachten (use bachelor-thesis-assessment or master-thesis-assessment for that).
 ---
 
 # Feedback Leseprobe (Bachelor- / Masterarbeit)
 
-Formative feedback on a draft excerpt of a thesis. The goal is to help the student improve the next draft, not to grade. The output is a single block of German plain text of **200–300 words**.
+Formative feedback on a draft excerpt of a thesis. The goal is to help the student improve the next draft, not to grade. The output is a single block of plain text of **200–300 words**, written in the **language of the thesis**: German feedback for German theses, English feedback for English theses.
 
 ## Workflow
 
@@ -24,6 +24,7 @@ Identify from the sample (or ask only if it cannot be inferred and matters):
 
 - **Level**: Bachelor or Master (title page, "Bachelorarbeit"/"Masterarbeit", degree). Default to the level the user names. Master theses are held to a higher standard of theoretical depth, critical discussion of literature and methodological rigour.
 - **Forschungsfrage**: Quote or paraphrase it if stated. If the sample does not state it, infer the likely question from title and introduction and note in the feedback that it should be made explicit.
+- **Language**: German or English, from the body text of the sample (not from the title page or a German abstract). This sets the language of the feedback. If the user explicitly asks for a specific language, use that instead.
 - **Which part** of the thesis the sample is (Einleitung, Theorie, Methode, Ergebnisse, Diskussion). Judge it against what that part has to achieve.
 
 ### 3. Analyse along six dimensions
@@ -43,9 +44,9 @@ Work through each dimension and collect concrete evidence (page/section, short q
 
 **Format requirements (strict):**
 
-- German, **200–300 words**. Verify with `wc -w` before returning; revise if outside the range.
+- In the language of the thesis (German or English), **200–300 words**. Verify with `wc -w` before returning; revise if outside the range.
 - **Plain text**: no Markdown, no headings, no bullet points, no bold, no tables, no emojis. Continuous prose in 4–6 short paragraphs separated by blank lines.
-- Address the student directly with **"Sie"** (switch to "du" only if the user asks).
+- Address the student directly: in German with **"Sie"** (switch to "du" only if the user asks), in English with "you".
 - No grade or points unless the user explicitly asks.
 
 **Structure of the text:**
@@ -59,12 +60,13 @@ Work through each dimension and collect concrete evidence (page/section, short q
 **Tone and content rules:**
 
 - Balanced: start with genuine strengths, then weaknesses. Be honest about serious problems (e.g. no recognisable research question, missing references) — do not soften them into irrelevance.
-- Specific: refer to sections, pages or short quoted phrases ("z. B. in Abschnitt 2.3", "etwa die Formulierung „…“"). Avoid generic remarks that would fit any thesis.
+- Specific: refer to sections, pages or short quoted phrases ("z. B. in Abschnitt 2.3", "etwa die Formulierung „…“" / "e.g. in Section 2.3").
+- English theses: judge grammar and style against academic English (consistent British or American spelling, no contractions, subject–verb agreement, article use, typical German-English interference such as false friends or German sentence structure). Avoid generic remarks that would fit any thesis.
 - Prioritise: with only 300 words, select the points with the greatest impact on the quality of the thesis. Do not list every typo.
-- Constructive: formulate weaknesses as a recommendation ("Es empfiehlt sich …", "Prüfen Sie …", "Ergänzen Sie …").
+- Constructive: formulate weaknesses as a recommendation ("Es empfiehlt sich …", "Prüfen Sie …", "Ergänzen Sie …" / "I recommend …", "Please check …", "Consider adding …").
 - Do not invent: if something cannot be judged from the sample (e.g. the reference list is missing), say so briefly instead of guessing.
 
-See `references/beispiel_feedback.md` for a phrasing bank and an example output.
+See `references/beispiel_feedback.md` for a German phrasing bank and example, and `references/example_feedback_en.md` for the English counterparts.
 
 ### 5. Return the result
 
